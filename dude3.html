@@ -71,10 +71,10 @@ $('#info1').append('<p>Party: '
 + emp.value.currentRepresentation.member.value.latestParty.name
 + '</p>');
 });
-$.getJSON('https://nodeapi-neon.vercel.app/dude7?skip='+id', function(emp1) {
+$.getJSON('https://nodeapi-neon.vercel.app/dude7?skip='+id, function(emp1) {
 $('#info2').html('<p>Member Info: ' + emp1.value + '</p>');
 });
-$.getJSON('https://nodeapi-neon.vercel.app/dude8?skip='+id', function(emp3) {
+$.getJSON('https://nodeapi-neon.vercel.app/dude8?skip='+id, function(emp3) {
 var dude5 = emp3.value;
 $('#info3').html('<p>Electorate Info: ' + dude5[0].electorate + '</p>');
 $('#info3').append('<p>Majority : ' + dude5[0].majority + '</p>');
@@ -190,8 +190,8 @@ map.addControl(searchControl);//inizialize search control
 }
 };
 };
-//httpRequest1.open('GET', 'https://members-api.parliament.uk/api/Location/Constituency/'+data2.value.id+'/Geometry');
-//httpRequest1.send();
+httpRequest1.open('GET', 'https://members-api.parliament.uk/api/Location/Constituency/'+data2.value.id+'/Geometry');
+httpRequest1.send();
 text2 += data2.value.id+" - "+data2.value.name+" - "+data66+"<br>";
 });
 }
@@ -201,7 +201,7 @@ makeRequest();
 const fruits = data.features;
 fruits.forEach(myFunction);
 document.getElementById("list").innerHTML = text;
-//const fruits2 = data2.features;
+const fruits2 = data.features;
 function myFunction(item, index, emp1) {
 text += index + ": " + item.properties.name + "<br>";
 }
