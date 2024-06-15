@@ -63,7 +63,7 @@ para3.innerHTML = id;
 info.appendChild(para);
 info.appendChild(para2);
 info.appendChild(para3);
-$.getJSON('https://nodeapi-neon.vercel.app/dude6?skip='+id, function(emp) {
+$.getJSON(`https://nodeapi-neon.vercel.app/dude6?skip=${id}`, function(emp) {
 $('#info1').html('<p>Constituency Name: ' + emp.value.name + '</p>');
 $('#info1').append('<p>MP Name : ' + emp.value.currentRepresentation.member.value.nameFullTitle + '</p>');
 $('#info1').append('<img src="' + emp.value.currentRepresentation.member.value.thumbnailUrl + '" alt="' + emp.value.currentRepresentation.member.value.nameFullTitle + '" width="100">');
@@ -71,10 +71,10 @@ $('#info1').append('<p>Party: '
 + emp.value.currentRepresentation.member.value.latestParty.name
 + '</p>');
 });
-$.getJSON('https://nodeapi-neon.vercel.app/dude7?skip='+id, function(emp1) {
+$.getJSON(`https://nodeapi-neon.vercel.app/dude7?skip=${id}`, function(emp1) {
 $('#info2').html('<p>Member Info: ' + emp1.value + '</p>');
 });
-$.getJSON('https://nodeapi-neon.vercel.app/dude8?skip='+id, function(emp3) {
+$.getJSON(`https://nodeapi-neon.vercel.app/dude8?skip=${id}`, function(emp3) {
 var dude5 = emp3.value;
 $('#info3').html('<p>Electorate Info: ' + dude5[0].electorate + '</p>');
 $('#info3').append('<p>Majority : ' + dude5[0].majority + '</p>');
