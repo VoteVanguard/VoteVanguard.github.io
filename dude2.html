@@ -1,0 +1,198 @@
+
+<!doctype html>
+<html lang="en">
+
+<!-- HEAD Start -->
+
+<head>
+  
+
+
+  <!-- Force HTTPS Start -->
+  <script>
+  // Don't force http when serving the website locally
+  if (!(window.location.host.startsWith("127.0.0.1")) && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+  </script>
+
+  <!-- Force HTTPS End -->
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179388840-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-179388840-1');
+</script>
+<style>
+  #result {
+   position: absolute;
+   width: 100%;
+   max-width:870px;
+   cursor: pointer;
+   overflow-y: auto;
+   max-height: 400px;
+   box-sizing: border-box;
+   z-index: 1001;
+  }
+  .link-class:hover{
+   background-color:#f1f1f1;
+  }
+  .chat {
+	height: 300px;
+	width: 50vw;
+	display: flex;
+	flex-direction: column;
+  justify-content: center;
+	align-items: center;
+} 
+
+::-webkit-input-placeholder { 
+	color: .711 
+}
+ 
+input { 
+	border: 0; 
+	padding: 15px; 
+	margin-left: auto;
+	border-radius: 10px; 
+}
+
+.messages {
+	display: flex;
+	flex-direction: column;
+	overflow: scroll;
+	height: 90%;
+	width: 100%;
+	background-color: white;
+	padding: 15px;
+	margin: 15px;
+	border-radius: 10px;
+}
+
+#bot {
+	margin-left: auto;
+}
+
+.bot {
+	font-family: Consolas, 'Courier New', Menlo, source-code-pro, Monaco,  
+	monospace;
+}
+
+.avatar {
+	height: 25px;
+}
+
+.response {
+	display: flex;
+	align-items: center;
+	margin: 1%;
+}
+  </style> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Blog and website of Justin Grierson, blogging mainly for tech. Opinions expressed are mine.">
+  <meta name="author" content="Justin Grierson">
+  <meta name="keywords" content="smith, jones, personal, jekyll, theme">
+  <meta property="og:locale" content="" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Justin Grierson" />
+  <meta property="og:description" content="Blog and website of Justin Grierson, blogging mainly for tech. Opinions expressed are mine." />
+  <meta property="og:url" content="https://ju3tin.github.io/" />
+  <meta property="og:site_name" content="Justin's Blog" />
+<meta property="article:section" content="Uncategorised" />
+<meta property="article:published_time" content="" />
+<meta property="article:modified_time" content="" />
+<meta property="og:updated_time" content="" />
+<meta property="og:image" content="https://ju3tin.github.io/assets/img/bg-office1.jpg" />
+<meta property="og:image:secure_url" content="https://ju3tin.github.io/assets/img/bg-office1.jpg" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="800" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Blog and website of Justin Grierson, blogging mainly for tech. Opinions expressed are mine." />
+<meta name="twitter:title" content="Justin Grierson" />
+<meta name="twitter:image" content="https://ju3tin.github.io/assets/img/bg-office1.jpg" />
+<meta property="og:image" content="https://ju3tin.github.io/img/tinyauthor1.jpg" />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="400" />
+  <link rel="canonical" href="/Working-With-Interactive-Maps.html">
+  <title>Justin Grierson | Working With Maps 2</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/odometer-theme-default.css">
+    <link rel="stylesheet" href="/assets/css/style1.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="./css/colorbox.css"/> <link rel="stylesheet" href="https://www.cssscript.com/demo/gallery-lightbox-mk/mklb/css/mklb.css"/><link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/><script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  	<style>#map { width: 800px; height: 500px; }
+.info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
+
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+  
+
+  
+
+
+</head>
+
+<!-- HEAD End -->
+
+<body onload="getStreams()">
+	<script src="/assets/js/jquery-3.3.1.min.js"></script>
+	<script src="/assets/js/popper.min.js"></script>
+	<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/imagesloaded.pkgd.min.js"></script>
+	<script src="/assets/js/isInViewport.jquery.js"></script>
+	<script src="/assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="/assets/js/scrolla.jquery.min.js"></script>
+	<script src="/assets/js/jquery.validate.min.js"></script>
+	<script src="/assets/js/jquery-validate.bootstrap-tooltip.min.js"></script>
+	<script src="/assets/js/odometer.min.js"></script>
+	<script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/jquery.vide.min.js"></script>
+    <script src="/assets/js/custom.js"></script>
+    
+</body>
+	 <script>
+$(document).ready(function(){
+ $.ajaxSetup({ cache: false });
+ $('#search').keyup(function(){
+  $('#result').html('');
+  $('#state').val('');
+  var searchField = $('#search').val();
+  var expression = new RegExp(searchField, "i");
+  $.getJSON('search.json', function(data) {
+   $.each(data, function(key, value){
+    if (value.title.search(expression) != -1 || value.content.search(expression) != -1)
+    {
+     $('#result').append('<li class="list-group-item link-class"><a href="'+value.url+'"><img src="'+value.simage+'" height="40" width="40" class="img-thumbnail" /> '+value.title+' | <span class="text-muted">'+value.category+'</span></a></li>');
+    }
+   });   
+  });
+ });
+ 
+ $('#result').on('click', 'li', function() {
+  var click_text = $(this).text().split('|');
+  $('#search').val($.trim(click_text[0]));
+  $("#result").html('');
+ });
+});
+</script>
+
+</html>
